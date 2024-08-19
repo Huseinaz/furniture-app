@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:furniture/pages/navbar.dart';
 import 'package:furniture/pages/onboarding_page.dart';
 
 void main() {
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       home: const OnboardingPage(),
       routes: {
         '/onboarding': (context) => const OnboardingPage(),
-        },
+        '/home': (context) => const Navbar(),
+      },
     );
   }
 }
