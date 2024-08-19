@@ -22,7 +22,7 @@ class OnboardingPage extends StatelessWidget {
             ),
           ),
           const Expanded(
-            flex: 4,
+            flex: 3,
             child: Padding(
               padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
               child: Column(
@@ -36,6 +36,7 @@ class OnboardingPage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 75, 75, 75)
                       ),
                     ),
                   ),
@@ -43,8 +44,8 @@ class OnboardingPage extends StatelessWidget {
                   Text(
                     'Browse through all categories and shop the best furniture for your dream house.',
                     style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 161, 161, 161)
                     ),
                   ),
                 ],
@@ -52,7 +53,9 @@ class OnboardingPage extends StatelessWidget {
             ),
           ),
           MyButton(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, '/home');
+            },
             buttonText: 'Get Started',
           ),
         ],
