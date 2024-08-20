@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furniture/pages/home_page.dart';
+import 'package:furniture/pages/profile_page.dart';
 
 class Navbar extends StatefulWidget {
   const Navbar({super.key});
@@ -15,7 +16,7 @@ class _NavbarState extends State<Navbar> {
     HomePage(),
     HomePage(),
     HomePage(),
-    HomePage(),
+    ProfilePage(),
   ];
 
   @override
