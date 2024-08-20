@@ -57,7 +57,41 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart'),
+        leadingWidth: 75,
+        leading: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Container(
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+            ),
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back_ios_new_rounded),
+              onPressed: () {
+                Navigator.pushNamed(context, '/home');
+              },
+            ),
+          ),
+        ),
+        title: const Text('Cart',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Container(
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.delete_outlined),
+                onPressed: () {},
+              ),
+            ),
+          ),
+        ],
+        backgroundColor: Colors.transparent,
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
