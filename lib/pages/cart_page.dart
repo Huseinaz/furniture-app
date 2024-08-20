@@ -91,14 +91,14 @@ class _CartPageState extends State<CartPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Total (${_cartItems.length} items):',
+                  'Total (${_cartItems.where((item) => item['isSelected']).fold<double>(0, (total, item) => total + item['quantity']).toStringAsFixed(0)} items):',
                   style: const TextStyle(
                     fontSize: 18,
                     color: Colors.grey,
                   ),
                 ),
                 Text(
-                  '\$${_cartItems.where((item) => item['isSelected']).fold<double>(0, (total, item) => total + (item['quantity'] * item['price']))}',
+                  '\$${_cartItems.where((item) => item['isSelected']).fold<double>(0, (total, item) => total + (item['quantity'] * item['price'])).toStringAsFixed(0)}',
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
