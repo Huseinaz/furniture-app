@@ -83,55 +83,58 @@ class ProductItem extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(vertical: 4 ,horizontal: 8),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 228, 255, 255),
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 20,
-                            height: 20,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 4, horizontal: 8),
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 228, 255, 255),
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 20,
+                              height: 20,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                              ),
+                              child: IconButton(
+                                padding: EdgeInsets.zero,
+                                iconSize: 18,
+                                onPressed: onRemove,
+                                icon: const Icon(Icons.remove),
+                                color: Colors.black,
+                              ),
                             ),
-                            child: IconButton(
-                              padding: EdgeInsets.zero,
-                              iconSize: 18,
-                              onPressed: onRemove,
-                              icon: const Icon(Icons.remove),
-                              color: Colors.black,
+                            const SizedBox(width: 8),
+                            Text(
+                              '$quantity',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            '$quantity',
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                            const SizedBox(width: 8),
+                            Container(
+                              width: 20,
+                              height: 20,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                              ),
+                              child: IconButton(
+                                padding: EdgeInsets.zero,
+                                iconSize: 18,
+                                onPressed: onAdd,
+                                icon: const Icon(Icons.add),
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 8),
-                          Container(
-                            width: 20,
-                            height: 20,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                            child: IconButton(
-                              padding:
-                                  EdgeInsets.zero,
-                              iconSize: 18,
-                              onPressed: onAdd,
-                              icon: const Icon(Icons.add),
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
