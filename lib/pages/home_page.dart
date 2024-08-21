@@ -152,15 +152,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(height: 15),
-              Text(
-                'Products',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey[800],
-                ),
-              ),
-              const SizedBox(height: 10),
               Expanded(
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,

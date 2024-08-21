@@ -23,6 +23,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 165,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -37,7 +38,7 @@ class ProductCard extends StatelessWidget {
                     const BorderRadius.vertical(top: Radius.circular(16)),
                 child: Image.asset(
                   imagePath,
-                  width: 170,
+                  width: 165,
                   height: 150,
                   fit: BoxFit.cover,
                 ),
@@ -125,10 +126,20 @@ class ProductCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    IconButton(
-                      onPressed: onAddToCart,
-                      icon: const Icon(Icons.add_circle,
-                          color: Color.fromARGB(255, 29, 97, 124)),
+                    Container(
+                      width: 38,
+                      height: 38,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color.fromARGB(255, 29, 97, 124),
+                      ),
+                      child: IconButton(
+                        padding: EdgeInsets.zero,
+                        iconSize: 20,
+                        onPressed: onAddToCart,
+                        icon: const Icon(Icons.add),
+                        color: Colors.white,
+                      ),
                     ),
                   ],
                 ),
