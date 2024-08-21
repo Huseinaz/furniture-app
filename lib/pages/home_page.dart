@@ -1,11 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:furniture/components/category.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> _categories = [
+      {
+        'label': 'Chairs',
+        'isSelected': selectedIndex == 0,
+        'onTap': () => onCategorySelected(0),
+      },
+      {
+        'label': 'Cupboards',
+        'isSelected': selectedIndex == 1,
+        'onTap': () => onCategorySelected(1),
+      },
+      {
+        'label': 'Tables',
+        'isSelected': selectedIndex == 2,
+        'onTap': () => onCategorySelected(2),
+      },
+      {
+        'label': 'Lamps',
+        'isSelected': selectedIndex == 3,
+        'onTap': () => onCategorySelected(3),
+      },
+      {
+        'label': 'Beds',
+        'isSelected': selectedIndex == 4,
+        'onTap': () => onCategorySelected(4),
+      },
+      {
+        'label': 'Sofas',
+        'isSelected': selectedIndex == 5,
+        'onTap': () => onCategorySelected(5),
+      },
+    ];
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -67,16 +105,19 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 10),
               SizedBox(
                 height: 40,
-                child: ListView(
+                child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  children: const [
-                    Category(label: 'Chairs', isSelected: true),
-                    Category(label: 'Cupboards', isSelected: false),
-                    Category(label: 'Tables', isSelected: false),
-                    Category(label: 'Lamps', isSelected: false),
-                    Category(label: 'Beds', isSelected: false),
-                    Category(label: 'Sofas', isSelected: false),
-                  ],
+                  itemCount: _categories.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: Category(
+                        label: _categories[index]['label'],
+                        isSelected: _categories[index]['isSelected'],
+                        onTap: _categories[index]['onTap'],
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
@@ -84,5 +125,11 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void onCategorySelected(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
   }
 }
