@@ -3,30 +3,36 @@ import 'package:flutter/material.dart';
 class Category extends StatelessWidget {
   final String label;
   final bool isSelected;
+  final VoidCallback onTap;
 
   const Category({
     super.key,
     required this.label,
-    this.isSelected = false,
+    required this.isSelected,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
-      child: ChoiceChip(
-        label: Text(label),
-        selected: isSelected,
-        onSelected: (_) {},
-        selectedColor: Colors.grey[800],
-        backgroundColor: Colors.grey[200],
-        labelStyle: TextStyle(
-          color: isSelected ? Colors.white : Colors.grey[800],
-        ),
-        showCheckmark: false,
-        shape: RoundedRectangleBorder(
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? const Color.fromARGB(255, 29, 97, 124)
+              : Colors.white,
           borderRadius: BorderRadius.circular(25),
-          side: const BorderSide(color: Colors.transparent),
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(
+              color: isSelected
+                  ? Colors.white
+                  : const Color.fromARGB(255, 29, 97, 124),
+            ),
+          ),
         ),
       ),
     );
