@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furniture/components/my_button.dart';
-import 'package:furniture/components/product_item.dart';
+import 'package:furniture/components/cart_item.dart';
 
 class CartPage extends StatefulWidget {
   @override
