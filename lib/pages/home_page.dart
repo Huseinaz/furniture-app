@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furniture/components/category.dart';
+import 'package:furniture/components/product_card.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,41 +10,71 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
 
+  final List<Map<String, dynamic>> _categories = [
+    {
+      'label': 'Chairs',
+      'isSelected': false,
+      'onTap': () {},
+    },
+    {
+      'label': 'Cupboards',
+      'isSelected': false,
+      'onTap': () {},
+    },
+    {
+      'label': 'Tables',
+      'isSelected': false,
+      'onTap': () {},
+    },
+    {
+      'label': 'Lamps',
+      'isSelected': false,
+      'onTap': () {},
+    },
+    {
+      'label': 'Beds',
+      'isSelected': false,
+      'onTap': () {},
+    },
+    {
+      'label': 'Sofas',
+      'isSelected': false,
+      'onTap': () {},
+    },
+  ];
+
+  final List<Map<String, dynamic>> _products = [
+    {
+      'imagePath': 'assets/onboarding.jpg',
+      'title': 'Modern Chair',
+      'subtitle': 'Armchair',
+      'price': 185.0,
+      'isNew': true,
+      'rating': 4.8,
+      'onAddToCart': () {},
+    },
+    {
+      'imagePath': 'assets/onboarding.jpg',
+      'title': 'Minimalist Chair',
+      'subtitle': 'Armchair',
+      'price': 185.0,
+      'isNew': true,
+      'rating': 4.5,
+      'onAddToCart': () {},
+    },
+    {
+      'imagePath': 'assets/onboarding.jpg',
+      'title': 'Yellow Chair',
+      'subtitle': 'Armchair',
+      'price': 185.0,
+      'isNew': true,
+      'rating': 4.5,
+      'onAddToCart': () {},
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> _categories = [
-      {
-        'label': 'Chairs',
-        'isSelected': selectedIndex == 0,
-        'onTap': () => onCategorySelected(0),
-      },
-      {
-        'label': 'Cupboards',
-        'isSelected': selectedIndex == 1,
-        'onTap': () => onCategorySelected(1),
-      },
-      {
-        'label': 'Tables',
-        'isSelected': selectedIndex == 2,
-        'onTap': () => onCategorySelected(2),
-      },
-      {
-        'label': 'Lamps',
-        'isSelected': selectedIndex == 3,
-        'onTap': () => onCategorySelected(3),
-      },
-      {
-        'label': 'Beds',
-        'isSelected': selectedIndex == 4,
-        'onTap': () => onCategorySelected(4),
-      },
-      {
-        'label': 'Sofas',
-        'isSelected': selectedIndex == 5,
-        'onTap': () => onCategorySelected(5),
-      },
-    ];
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -113,8 +144,38 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.only(right: 8),
                       child: Category(
                         label: _categories[index]['label'],
-                        isSelected: _categories[index]['isSelected'],
-                        onTap: _categories[index]['onTap'],
+                        isSelected: selectedIndex == index,
+                        onTap: () => onCategorySelected(index),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 15),
+              Text(
+                'Products',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[800],
+                ),
+              ),
+              const SizedBox(height: 10),
+              Expanded(
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _products.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: ProductCard(
+                        imagePath: _products[index]['imagePath'],
+                        title: _products[index]['title'],
+                        subtitle: _products[index]['subtitle'],
+                        price: _products[index]['price'],
+                        isNew: _products[index]['isNew'],
+                        rating: _products[index]['rating'],
+                        onAddToCart: _products[index]['onAddToCart'],
                       ),
                     );
                   },
