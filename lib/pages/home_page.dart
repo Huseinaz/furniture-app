@@ -30,6 +30,30 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 15),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.search, color: Colors.grey[600]),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Search for furniture',
+                          hintStyle: TextStyle(color: Colors.grey[400]),
+                        ),
+                      ),
+                    ),
+                    Icon(Icons.filter_list_rounded, color: Colors.grey[600]),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
