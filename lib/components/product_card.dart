@@ -37,20 +37,20 @@ class ProductCard extends StatelessWidget {
                     const BorderRadius.vertical(top: Radius.circular(16)),
                 child: Image.asset(
                   imagePath,
-                  width: 150,
-                  height: 130,
+                  width: 170,
+                  height: 150,
                   fit: BoxFit.cover,
                 ),
               ),
               Positioned(
-                top: 8,
+                bottom: 8,
                 left: 8,
                 child: isNew
                     ? Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: const Color.fromARGB(255, 250, 77, 64),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Text(
@@ -65,13 +65,13 @@ class ProductCard extends StatelessWidget {
                     : const SizedBox.shrink(),
               ),
               Positioned(
-                top: 8,
+                bottom: 8,
                 right: 8,
                 child: Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.grey[200],
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
@@ -81,7 +81,7 @@ class ProductCard extends StatelessWidget {
                       Text(
                         rating.toString(),
                         style: const TextStyle(
-                          color: Colors.black,
+                          color: Colors.amber,
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
