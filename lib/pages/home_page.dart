@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:furniture/components/category.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -51,6 +52,30 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     Icon(Icons.filter_list_rounded, color: Colors.grey[600]),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 15),
+              Text(
+                'Categories',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[800],
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 40,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: const [
+                    Category(label: 'Chairs', isSelected: true),
+                    Category(label: 'Cupboards', isSelected: false),
+                    Category(label: 'Tables', isSelected: false),
+                    Category(label: 'Lamps', isSelected: false),
+                    Category(label: 'Beds', isSelected: false),
+                    Category(label: 'Sofas', isSelected: false),
                   ],
                 ),
               ),
