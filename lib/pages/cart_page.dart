@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:furniture/components/my_button.dart';
 import 'package:furniture/components/cart_item.dart';
+import 'package:furniture/components/product_card.dart';
 
 class CartPage extends StatefulWidget {
   @override
@@ -32,6 +33,36 @@ class _CartPageState extends State<CartPage> {
       'price': 185,
       'quantity': 1,
       'isSelected': false,
+    },
+  ];
+
+  final List<Map<String, dynamic>> _products = [
+    {
+      'imagePath': 'assets/onboarding.jpg',
+      'title': 'Modern Chair',
+      'subtitle': 'Armchair',
+      'price': 185,
+      'isNew': true,
+      'rating': 4.8,
+      'onAddToCart': () {},
+    },
+    {
+      'imagePath': 'assets/onboarding.jpg',
+      'title': 'Minimalist Chair',
+      'subtitle': 'Armchair',
+      'price': 185,
+      'isNew': true,
+      'rating': 4.5,
+      'onAddToCart': () {},
+    },
+    {
+      'imagePath': 'assets/onboarding.jpg',
+      'title': 'Yellow Chair',
+      'subtitle': 'Armchair',
+      'price': 185,
+      'isNew': true,
+      'rating': 4.3,
+      'onAddToCart': () {},
     },
   ];
 
@@ -93,28 +124,74 @@ class _CartPageState extends State<CartPage> {
         ],
         backgroundColor: Colors.transparent,
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: _cartItems.length,
-        itemBuilder: (context, index) {
-          final item = _cartItems[index];
-          return Column(
-            children: [
-              ProductItem(
-                imagePath: item['imagePath'],
-                title: item['title'],
-                description: item['description'],
-                price: item['price'],
-                quantity: item['quantity'],
-                isSelected: item['isSelected'],
-                onAdd: () => _addQuantity(index),
-                onRemove: () => _removeQuantity(index),
-                onSelect: () => _toggleSelection(index),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ListView.builder(
+              shrinkWrap: true, // Ensures it doesn't take all available space
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+              itemCount: _cartItems.length,
+              itemBuilder: (context, index) {
+                final item = _cartItems[index];
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: ProductItem(
+                    imagePath: item['imagePath'],
+                    title: item['title'],
+                    description: item['description'],
+                    price: item['price'],
+                    quantity: item['quantity'],
+                    isSelected: item['isSelected'],
+                    onAdd: () => _addQuantity(index),
+                    onRemove: () => _removeQuantity(index),
+                    onSelect: () => _toggleSelection(index),
+                  ),
+                );
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+              child: Container(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Recently View',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[800],
+                  ),
+                ),
               ),
-              const SizedBox(height: 10),
-            ],
-          );
-        },
+            ),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+              child: SizedBox(
+                height: 270,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _products.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: ProductCard(
+                        imagePath: _products[index]['imagePath'],
+                        title: _products[index]['title'],
+                        subtitle: _products[index]['subtitle'],
+                        price: _products[index]['price'],
+                        isNew: _products[index]['isNew'],
+                        rating: _products[index]['rating'],
+                        onAddToCart: _products[index]['onAddToCart'],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+            const SizedBox(height: 5),
+          ],
+        ),
       ),
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
