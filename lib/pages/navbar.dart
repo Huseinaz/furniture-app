@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furniture/pages/cart_page.dart';
+import 'package:furniture/pages/detail_page.dart';
 import 'package:furniture/pages/home_page.dart';
 import 'package:furniture/pages/profile_page.dart';
 
@@ -14,10 +15,10 @@ class _NavbarState extends State<Navbar> {
   int myIndex = 0;
   List<Widget> widgetList = [
     HomePage(),
-    HomePage(),
+    DetailPage(),
     HomePage(),
     CartPage(),
-    ProfilePage(),
+    const ProfilePage(),
   ];
 
   @override
