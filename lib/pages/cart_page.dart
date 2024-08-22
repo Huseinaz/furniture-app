@@ -96,11 +96,13 @@ class _CartPageState extends State<CartPage> {
               shape: BoxShape.circle,
               color: Colors.white,
             ),
-            child: IconButton(
-              icon: const Icon(Icons.arrow_back_ios_new_rounded),
-              onPressed: () {
-                Navigator.pushNamed(context, '/home');
-              },
+            child: Center(
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back_ios_new_rounded),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/home');
+                },
+              ),
             ),
           ),
         ),
