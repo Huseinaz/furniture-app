@@ -45,6 +45,33 @@ class _DetailPageState extends State<DetailPage> {
         ],
         backgroundColor: Colors.transparent,
       ),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          Center(
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.asset(
+                  'assets/onboarding.jpg',
+                  height: 250,
+                  fit: BoxFit.contain,
+                ),
+                const Positioned(
+                  bottom: 10,
+                  child: Text(
+                    '360°',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
