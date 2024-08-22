@@ -112,6 +112,27 @@ class _DetailPageState extends State<DetailPage> {
               color: Colors.grey,
             ),
           ),
+          const SizedBox(height: 16),
+          RichText(
+            text: const TextSpan(
+              text:
+                  'The simple and elegant shape makes it very suitable for those of you who like those of you want a minimalist room ',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+              ),
+              children: [
+                TextSpan(
+                  text: 'Read More',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
