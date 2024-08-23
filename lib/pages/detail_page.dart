@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-class DetailPage extends StatefulWidget {
-  @override
-  _DetailPageState createState() => _DetailPageState();
-}
-
 Widget _buildMiniImage(String imagePath) {
   return Container(
     width: 50,
@@ -19,7 +14,15 @@ Widget _buildMiniImage(String imagePath) {
   );
 }
 
+class DetailPage extends StatefulWidget {
+  @override
+  _DetailPageState createState() => _DetailPageState();
+}
+
 class _DetailPageState extends State<DetailPage> {
+  int _selectedColorIndex = 0;
+  final List<Color> _colors = [Colors.grey, Colors.blueGrey, Colors.red];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -156,6 +159,63 @@ class _DetailPageState extends State<DetailPage> {
               _buildMiniImage('assets/onboarding.jpg'),
               const SizedBox(width: 8),
               _buildMiniImage('assets/onboarding.jpg'),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  const Text(
+                    'Color',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  for (int i = 0; i < _colors.length; i++)
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _selectedColorIndex = i;
+                        });
+                      },
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Container(
+                            width: 26,
+                            height: 26,
+                            decoration: BoxDecoration(
+                              color: i == _selectedColorIndex
+                                  ? _colors[i]
+                                  : Colors.transparent,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          Container(
+                            width: 22,
+                            height: 22,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          Container(
+                            width: 20,
+                            height: 20,
+                            decoration: BoxDecoration(
+                              color: _colors[i],
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
             ],
           ),
         ],
