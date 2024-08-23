@@ -5,6 +5,20 @@ class DetailPage extends StatefulWidget {
   _DetailPageState createState() => _DetailPageState();
 }
 
+Widget _buildMiniImage(String imagePath) {
+  return Container(
+    width: 50,
+    height: 50,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(8),
+      image: DecorationImage(
+        image: AssetImage(imagePath),
+        fit: BoxFit.cover,
+      ),
+    ),
+  );
+}
+
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
@@ -132,6 +146,17 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ],
             ),
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              _buildMiniImage('assets/onboarding.jpg'),
+              const SizedBox(width: 8),
+              _buildMiniImage('assets/onboarding.jpg'),
+              const SizedBox(width: 8),
+              _buildMiniImage('assets/onboarding.jpg'),
+            ],
           ),
         ],
       ),
