@@ -130,7 +130,7 @@ class _CartPageState extends State<CartPage> {
         child: Column(
           children: [
             ListView.builder(
-              shrinkWrap: true, // Ensures it doesn't take all available space
+              shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
               itemCount: _cartItems.length,
@@ -195,36 +195,42 @@ class _CartPageState extends State<CartPage> {
           ],
         ),
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Total (${_cartItems.where((item) => item['isSelected']).fold<double>(0, (total, item) => total + item['quantity']).toStringAsFixed(0)} items):',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.grey,
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Total (${_cartItems.where((item) => item['isSelected']).fold<double>(0, (total, item) => total + item['quantity']).toStringAsFixed(0)} items):',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey,
+                    ),
                   ),
-                ),
-                Text(
-                  '\$${_cartItems.where((item) => item['isSelected']).fold<double>(0, (total, item) => total + (item['quantity'] * item['price'])).toStringAsFixed(0)}',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                  Text(
+                    '\$${_cartItems.where((item) => item['isSelected']).fold<double>(0, (total, item) => total + (item['quantity'] * item['price'])).toStringAsFixed(0)}',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          MyButton(
-            onTap: () {},
-            buttonText: 'Proceed to Checkout',
-          ),
-        ],
+            Container(
+              color: Colors.white,
+              child: MyButton(
+                onTap: () {},
+                buttonText: 'Proceed to Checkout',
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
