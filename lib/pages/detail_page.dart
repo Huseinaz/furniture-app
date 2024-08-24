@@ -78,227 +78,236 @@ class _DetailPageState extends State<DetailPage> {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(16),
-              children: [
-                Center(
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/onboarding.jpg',
-                        height: 250,
-                        fit: BoxFit.contain,
-                      ),
-                      const Positioned(
-                        bottom: 10,
-                        child: Text(
-                          '360°',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                    ],
+          Container(
+            color: Colors.transparent, // Keeps the image background as is
+            child: Center(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Image.asset(
+                    'assets/onboarding.jpg',
+                    height: 250,
+                    fit: BoxFit.contain,
                   ),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  children: [
-                    const Text(
-                      'Modern Chair',
+                  const Positioned(
+                    bottom: 10,
+                    child: Text(
+                      '360°',
                       style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Colors.grey,
                       ),
                     ),
-                    const Spacer(),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      child: const Row(
-                        children: [
-                          Icon(Icons.star, color: Colors.amber, size: 16),
-                          SizedBox(width: 4),
-                          Text(
-                            '4.8',
-                            style: TextStyle(
-                              color: Colors.amber,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                const Text(
-                  'Armchair',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
                   ),
-                ),
-                const SizedBox(height: 16),
-                RichText(
-                  text: const TextSpan(
-                    text:
-                        'The simple and elegant shape makes it very suitable for those of you who like those of you want a minimalist room ',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                    ),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              color:
+                  Colors.white, // White background for the rest of the content
+              padding: const EdgeInsets.all(16),
+              child: ListView(
+                children: [
+                  Row(
                     children: [
-                      TextSpan(
-                        text: 'Read More',
+                      const Text(
+                        'Modern Chair',
                         style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
+                          fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    _buildMiniImage('assets/onboarding.jpg'),
-                    const SizedBox(width: 8),
-                    _buildMiniImage('assets/onboarding.jpg'),
-                    const SizedBox(width: 8),
-                    _buildMiniImage('assets/onboarding.jpg'),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const Text(
-                          'Color',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        for (int i = 0; i < _colors.length; i++)
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _selectedColorIndex = i;
-                              });
-                            },
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Container(
-                                  width: 26,
-                                  height: 26,
-                                  decoration: BoxDecoration(
-                                    color: i == _selectedColorIndex
-                                        ? _colors[i]
-                                        : Colors.transparent,
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
-                                Container(
-                                  width: 22,
-                                  height: 22,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
-                                Container(
-                                  width: 20,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                    color: _colors[i],
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: Container(
+                      const Spacer(),
+                      Container(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 4, horizontal: 8),
+                            horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
                           color: Colors.grey[200],
                           borderRadius: BorderRadius.circular(25),
                         ),
-                        child: Row(
+                        child: const Row(
                           children: [
-                            Container(
-                              width: 20,
-                              height: 20,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                              ),
-                              child: IconButton(
-                                padding: EdgeInsets.zero,
-                                iconSize: 18,
-                                onPressed: _decrementQuantity,
-                                icon: const Icon(Icons.remove),
-                                color: Colors.black,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
+                            Icon(Icons.star, color: Colors.amber, size: 16),
+                            SizedBox(width: 4),
                             Text(
-                              '$_quantity',
-                              style: const TextStyle(
+                              '4.8',
+                              style: TextStyle(
+                                color: Colors.amber,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Container(
-                              width: 20,
-                              height: 20,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                              ),
-                              child: IconButton(
-                                padding: EdgeInsets.zero,
-                                iconSize: 18,
-                                onPressed: _incrementQuantity,
-                                icon: const Icon(Icons.add),
-                                color: Colors.black,
                               ),
                             ),
                           ],
                         ),
                       ),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  const Text(
+                    'Armchair',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                  const SizedBox(height: 16),
+                  RichText(
+                    text: const TextSpan(
+                      text:
+                          'The simple and elegant shape makes it very suitable for those of you who like those of you want a minimalist room ',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: 'Read More',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      _buildMiniImage('assets/onboarding.jpg'),
+                      const SizedBox(width: 8),
+                      _buildMiniImage('assets/onboarding.jpg'),
+                      const SizedBox(width: 8),
+                      _buildMiniImage('assets/onboarding.jpg'),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          const Text(
+                            'Color',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          for (int i = 0; i < _colors.length; i++)
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _selectedColorIndex = i;
+                                });
+                              },
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Container(
+                                    width: 26,
+                                    height: 26,
+                                    decoration: BoxDecoration(
+                                      color: i == _selectedColorIndex
+                                          ? _colors[i]
+                                          : Colors.transparent,
+                                      shape: BoxShape.circle,
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 22,
+                                    height: 22,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      shape: BoxShape.circle,
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 20,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      color: _colors[i],
+                                      shape: BoxShape.circle,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 4, horizontal: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 20,
+                                height: 20,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                ),
+                                child: IconButton(
+                                  padding: EdgeInsets.zero,
+                                  iconSize: 18,
+                                  onPressed: _decrementQuantity,
+                                  icon: const Icon(Icons.remove),
+                                  color: Colors.black,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                '$_quantity',
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Container(
+                                width: 20,
+                                height: 20,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                ),
+                                child: IconButton(
+                                  padding: EdgeInsets.zero,
+                                  iconSize: 18,
+                                  onPressed: _incrementQuantity,
+                                  icon: const Icon(Icons.add),
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
-          const SizedBox(height: 10),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: MyButton(
-              onTap: () {},
-              buttonText: 'Add to Cart  |  \$185',
+          Container(
+            color: Colors.white,
+            padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: MyButton(
+                onTap: () {},
+                buttonText: 'Add to Cart  |  \$185',
+              ),
             ),
           ),
         ],
