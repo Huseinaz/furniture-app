@@ -13,10 +13,10 @@ class Navbar extends StatefulWidget {
 
 class _NavbarState extends State<Navbar> {
   int myIndex = 0;
-  List<Widget> widgetList = [
+  List<Widget?> widgetList = [
     HomePage(),
     DetailPage(),
-    HomePage(),
+    null,
     CartPage(),
     const ProfilePage(),
   ];
@@ -25,7 +25,7 @@ class _NavbarState extends State<Navbar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: widgetList[myIndex],
+        child: widgetList[myIndex] ?? Container(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
